@@ -1,0 +1,6 @@
+The SQL queries and table creation DDL derive from material licensed as follows:
+TPC Benchmark™, TPC-H, QppH, QthH, and QphH are trademarks of the Transaction Processing Performance Council.
+All parties are granted permission to copy and distribute to any party without fee all or part of this material 
+provided that: 1) copying and distribution is done for the primary purpose of disseminating TPC material; 
+2) the TPC copyright notice, the title of the publication, and its date appear, and notice is given that copying 
+is by permission of the Transaction Processing Performance Council.
