@@ -3,7 +3,7 @@
 MySQL Database Service Analytics Engine (MySQL Analytics Engine) is a fully
 managed and highly scalable in-memory database service which provides a
 cost-efficient solution for SQL analytic processing. It is tightly integrated
-with MySQL database and is optimized for Oracle Cloud.
+with MySQL database and is optimized for Oracle Cloud Infrastructure.
 
 You can run analytics on Your MySQL data without requiring ETL and without any
 change to Your applications. Your applications connect to MySQL Analytics cluster
@@ -19,7 +19,7 @@ from TPC-H benchmark, specific for MySQL Database Service and MySQL Analytics En
 2. [MySQL Shell][3] to import generated TPC-H dataset to MySQL Database Service
 
 ## Required services:
-1. [Oracle Cloud][8]
+1. [Oracle Cloud Infrastructure][8]
 2. [MySQL Database Service][4] and [MySQL Analytics Engine][5]
 
 ## Repository
