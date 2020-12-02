@@ -62,8 +62,8 @@
    alter table PARTSUPP secondary_engine RAPID;
 
 -- Secondary Load
--- Set Parallel reads threads to 48
-set innodb_parallel_read_threads=48;
+-- Set Parallel reads threads to 32
+set innodb_parallel_read_threads=32;
 ALTER TABLE LINEITEM SECONDARY_LOAD;
 ALTER TABLE ORDERS SECONDARY_LOAD;
 ALTER TABLE CUSTOMER SECONDARY_LOAD;
