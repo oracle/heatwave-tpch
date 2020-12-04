@@ -1,6 +1,9 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
+-- TPC-H Query 9 - Product Type Profit Measure
 SELECT /*+ set_var(use_secondary_engine=forced) */  
     nation, o_year, SUM(amount) AS sum_profit
 FROM

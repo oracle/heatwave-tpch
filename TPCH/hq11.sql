@@ -1,6 +1,9 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
+-- TPC-H Query 11 - Important Stock Identification
 SELECT /*+ set_var(use_secondary_engine=forced) */  
     PS_PARTKEY, SUM(PS_SUPPLYCOST * PS_AVAILQTY) AS VALUE
 FROM

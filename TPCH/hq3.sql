@@ -1,6 +1,9 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
+-- TPC-H Query 3 - Shipping Priority
 SELECT /*+ set_var(use_secondary_engine=forced) */  
     l_orderkey,
     SUM(l_extendedprice * (1 - l_discount)) AS revenue,

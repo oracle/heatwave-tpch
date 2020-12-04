@@ -1,6 +1,9 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
+-- TPC-H Query 21 - Suppliers Who Kept Orders Waiting
 SELECT /*+ set_var(use_secondary_engine=forced) */  
     S_NAME, COUNT(*) AS NUMWAIT
 FROM

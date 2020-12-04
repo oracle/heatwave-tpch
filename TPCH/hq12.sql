@@ -1,6 +1,9 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
+-- TPC-H Query 12 -Shipping Modes and Order Priority
 SELECT /*+ set_var(use_secondary_engine=forced) */   
     l_shipmode,
     SUM(CASE

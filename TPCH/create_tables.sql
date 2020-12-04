@@ -1,6 +1,8 @@
 -- Copyright (c) 2020, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+-- Coypright (c) 2020, Transaction Processing Performance Council
+
 -- using database tpch_1024 as an example
 -- ascii_bin character set and collation used for benchmarking performance
 
