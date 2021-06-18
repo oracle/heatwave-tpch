@@ -25,7 +25,7 @@ HeatWave.
 
 ## Getting started
 To run TPC-H queries in HeatWave
-1. Generate TPC-H data using TPC-H data generation tool
+1. [Generate TPC-H data using TPC-H data generation tool](https://dev.mysql.com/doc/heatwave/en/heatwave-tpch-sample-data.html)
 2. Provision MySQL Database Service instance. See [Getting Started with MySQL Database Service][6]
 3. Run [create_tables.sql](TPCH/create_tables.sql) to create TPC-H schema on MySQL Database Service instance
 4. Import TPC-H data generated to MySQL Database Service instance. See [MySQL Shell Parallel Table Import Utility documentation][7]
