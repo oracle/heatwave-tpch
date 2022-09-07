@@ -1,35 +1,36 @@
 # HeatWave TPC-H
 
-HeatWave is a fully managed and highly scalable in-memory database service which provides a cost-efficient solution for
-SQL analytic processing. It is tightly integrated with MySQL database and is optimized for Oracle Cloud Infrastructure.
+MySQL HeatWave is a fully managed and highly scalable in-memory database service which provides a cost-efficient solution for 
+OLTP, OLAP and Machine Learning. It is available on both Oracle Cloud Infrastructure (OCI) and Amazon Web Service (AWS).
 
-You can run analytics on Your MySQL data without requiring ETL and without any change to Your applications. Your
-applications connect to the HeatWave cluster through standard MySQL protocols, and you can manage HeatWave
-via Oracle Cloud REST APIs, SDKs, and the Console.
+HeatWave is tightly integrated with MySQL database and is optimized for underlying infrastructure.
+You can run analytics on your MySQL data without requiring ETL and without any change to Your applications. Your 
+applications connect to the HeatWave cluster through standard MySQL protocols.
+The MySQL Database is built on the MySQL Enterprise Edition Server, which allows developers to quickly create and deploy secure 
+cloud native applications using the world's most popular open source database. 
 
 This repository contains SQL scripts derived from [TPC Benchmark&trade;H (TPC-H)][1]. The SQL scripts contain TPC-H schema
-generation statements and queries derived from TPC-H benchmark, specific for MySQL Database Service and
-HeatWave.
+generation statements and queries derived from TPC-H benchmark, specific for MySQL HeatWave.
 
 ## Software prerequisites:
 1. [TPC-H data generation tool][2] to generate TPC-H dataset for workload sizes of your choice
-2. [MySQL Shell][3] to import generated TPC-H dataset to MySQL Database Service
+2. [MySQL Shell][3] to import generated TPC-H dataset to MySQL Database System
 
 ## Required services:
-1. [Oracle Cloud Infrastructure][8]
-2. [MySQL Database Service][4] and [HeatWave][5]
+1. [Oracle Cloud Infrastructure][7]
+2. [MySQL HeatWave for OCI][4] or [MySQL HeatWave on AWS]
 
 ## Repository
-* [TPCH](TPCH) - a collection of scripts for TPC-H schema and queries specific to MySQL Database Service
+* [TPCH](TPCH) - a collection of scripts for TPC-H schema and queries specific to MySQL Database System
 * [HeatWave](HeatWave) - a collection of scripts to configure HeatWave to run TPC-H queries
 
 ## Getting started
 To run TPC-H queries in HeatWave
 1. Generate TPC-H data using TPC-H data generation tool
-2. Provision MySQL Database Service instance. See [Getting Started with MySQL Database Service][6]
-3. Run [create_tables.sql](TPCH/create_tables.sql) to create TPC-H schema on MySQL Database Service instance
-4. Import TPC-H data generated to MySQL Database Service instance. See [MySQL Shell Parallel Table Import Utility documentation][7]
-5. Add a HeatWave cluster to MySQL Database Service instance. See [HeatWave][5] documentation
+2. Provision a MySQL Database System
+3. Run [create_tables.sql](TPCH/create_tables.sql) to create TPC-H schema on MySQL Database System
+4. Import TPC-H data generated to MySQL Database System. See [MySQL Shell Parallel Table Import Utility documentation][6]
+5. Add a HeatWave cluster to MySQL Database System. See [HeatWave][5] documentation
 6. Run [secondary_load.sql](HeatWave/secondary_load.sql) to configure and load data to HeatWave cluster
 7. You are now ready to run the queries derived from TPC-H
 
@@ -37,11 +38,10 @@ To run TPC-H queries in HeatWave
 [1]: http://www.tpc.org/tpch/
 [2]: http://www.tpc.org/tpc_documents_current_versions/download_programs/tools-download-request5.asp?bm_type=TPC-H&bm_vers=2.18.0&mode=CURRENT-ONLY
 [3]: https://dev.mysql.com/downloads/shell/
-[4]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/index.html
+[4]: https://docs.oracle.com/en-us/iaas/mysql-database/doc/heatwave.html
 [5]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/doc/mysql-analytics-engine.html
-[6]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/doc/getting-started.html
-[7]: https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-parallel-table.html
-[8]: https://docs.cloud.oracle.com/en-us/iaas/Content/home.htm
+[6]: https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-parallel-table.html
+[7]: https://docs.cloud.oracle.com/en-us/iaas/Content/home.htm
 
 TPC Benchmark&trade;, TPC-H, QppH, QthH, and QphH are trademarks of the Transaction Processing Performance
 Council.
