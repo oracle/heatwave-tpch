@@ -7,17 +7,17 @@
 SELECT /*+ set_var(use_secondary_engine=forced) */  
     n_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue
 FROM
-    ORDERS
-        STRAIGHT_JOIN
-    LINEITEM
-        STRAIGHT_JOIN
-    CUSTOMER
-        STRAIGHT_JOIN
-    SUPPLIER
-        STRAIGHT_JOIN
     NATION
         STRAIGHT_JOIN
     REGION
+        STRAIGHT_JOIN
+    SUPPLIER
+        STRAIGHT_JOIN
+    LINEITEM
+        STRAIGHT_JOIN
+    ORDERS
+        STRAIGHT_JOIN
+    CUSTOMER
 WHERE
     c_custkey = o_custkey
         AND l_orderkey = o_orderkey
