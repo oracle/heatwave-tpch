@@ -4,7 +4,7 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 12 -Shipping Modes and Order Priority
-SELECT /*+ set_var(use_secondary_engine=forced) */   
+SELECT   
     l_shipmode,
     SUM(CASE
         WHEN
@@ -27,10 +27,10 @@ FROM
     LINEITEM
 WHERE
     o_orderkey = l_orderkey
-        AND l_shipmode IN ('MAIL' , 'SHIP')
-        AND l_commitdate < l_receiptdate
-        AND l_shipdate < l_commitdate
-        AND l_receiptdate >= DATE '1994-01-01'
-        AND l_receiptdate < DATE '1994-01-01' + INTERVAL '1' YEAR
+    AND l_shipmode IN ('MAIL' , 'SHIP')
+    AND l_commitdate < l_receiptdate
+    AND l_shipdate < l_commitdate
+    AND l_receiptdate >= DATE '1994-01-01'
+    AND l_receiptdate < DATE '1994-01-01' + INTERVAL '1' YEAR
 GROUP BY l_shipmode
 ORDER BY l_shipmode;

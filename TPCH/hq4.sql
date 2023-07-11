@@ -4,19 +4,19 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 4 - Order Priority Checking
-SELECT /*+ set_var(use_secondary_engine=forced) */  
+SELECT  
     O_ORDERPRIORITY, COUNT(*) AS ORDER_COUNT
 FROM
     ORDERS
 WHERE
     O_ORDERDATE >= DATE '1994-03-01'
-        AND O_ORDERDATE < DATE '1994-03-01' + INTERVAL '3' MONTH
-        AND EXISTS( SELECT 
-            *
+    AND O_ORDERDATE < DATE '1994-03-01' + INTERVAL '3' MONTH
+    AND EXISTS( SELECT 
+          *
         FROM
-            LINEITEM
+           LINEITEM
         WHERE
             L_ORDERKEY = O_ORDERKEY
-                AND L_COMMITDATE < L_RECEIPTDATE)
+            AND L_COMMITDATE < L_RECEIPTDATE)
 GROUP BY O_ORDERPRIORITY
 ORDER BY O_ORDERPRIORITY;

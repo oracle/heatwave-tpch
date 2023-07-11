@@ -4,29 +4,25 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 11 - Important Stock Identification
-SELECT /*+ set_var(use_secondary_engine=forced) */  
+SELECT  
     PS_PARTKEY, SUM(PS_SUPPLYCOST * PS_AVAILQTY) AS VALUE
 FROM
+    PARTSUPP,
+    SUPPLIER,
     NATION
-        STRAIGHT_JOIN
-    SUPPLIER
-        STRAIGHT_JOIN
-    PARTSUPP
 WHERE
     PS_SUPPKEY = S_SUPPKEY
-        AND S_NATIONKEY = N_NATIONKEY
-        AND N_NAME = 'GERMANY'
+    AND S_NATIONKEY = N_NATIONKEY
+    AND N_NAME = 'GERMANY'
 GROUP BY PS_PARTKEY
 HAVING SUM(PS_SUPPLYCOST * PS_AVAILQTY) > (SELECT 
         SUM(PS_SUPPLYCOST * PS_AVAILQTY) * 0.0001
     FROM
+        PARTSUPP,
+        SUPPLIER,
         NATION
-            STRAIGHT_JOIN
-        SUPPLIER
-            STRAIGHT_JOIN
-        PARTSUPP
     WHERE
         PS_SUPPKEY = S_SUPPKEY
-            AND S_NATIONKEY = N_NATIONKEY
-            AND N_NAME = 'GERMANY')
+        AND S_NATIONKEY = N_NATIONKEY
+        AND N_NAME = 'GERMANY')
 ORDER BY VALUE DESC;

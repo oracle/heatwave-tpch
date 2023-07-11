@@ -4,7 +4,7 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 13 - Customer Distribution
-SELECT /*+ set_var(use_secondary_engine=forced) */  
+SELECT   
     c_count, COUNT(*) AS custdist
 FROM
     (SELECT 

@@ -30,7 +30,7 @@ CREATE TABLE LINEITEM ( L_ORDERKEY    BIGINT NOT NULL,
                         L_SHIPMODE    CHAR(10) NOT NULL,
                         L_COMMENT     VARCHAR(44) NOT NULL, 
                         PRIMARY KEY (L_ORDERKEY, L_LINENUMBER))
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -49,7 +49,7 @@ CREATE TABLE ORDERS  ( O_ORDERKEY       BIGINT NOT NULL,
                        O_SHIPPRIORITY   INTEGER NOT NULL,
                        O_COMMENT  VARCHAR(79) NOT NULL,
                        PRIMARY KEY (O_ORDERKEY))
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -67,7 +67,7 @@ create table CUSTOMER ( C_CUSTKEY     INTEGER NOT NULL,
                         C_MKTSEGMENT  CHAR(10) NOT NULL, 
                         C_COMMENT     VARCHAR(117) NOT NULL, 
                         PRIMARY KEY (C_CUSTKEY)) 
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -84,7 +84,7 @@ CREATE TABLE SUPPLIER ( S_SUPPKEY     INTEGER NOT NULL,
                         S_ACCTBAL     DECIMAL(15,2) NOT NULL,
                         S_COMMENT     VARCHAR(101) NOT NULL, 
                         PRIMARY KEY (S_SUPPKEY))
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -98,7 +98,7 @@ CREATE TABLE NATION ( N_NATIONKEY      INTEGER NOT NULL,
                       N_REGIONKEY      INTEGER NOT NULL, 
                       N_COMMENT        VARCHAR(152) NOT NULL, 
                       PRIMARY KEY (N_NATIONKEY)) 
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -110,7 +110,7 @@ CREATE TABLE REGION ( R_REGIONKEY       INTEGER NOT NULL,
                       R_NAME            CHAR(25) NOT NULL, 
                       R_COMMENT         VARCHAR(152) NOT NULL, 
                       PRIMARY KEY (R_REGIONKEY)) 
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -129,7 +129,7 @@ CREATE TABLE PART  ( P_PARTKEY          INTEGER NOT NULL,
                      P_RETAILPRICE      DECIMAL(15,2) NOT NULL,
                      P_COMMENT          VARCHAR(23) NOT NULL, 
                      PRIMARY KEY (P_PARTKEY))
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>", 
@@ -144,7 +144,7 @@ CREATE TABLE PARTSUPP ( PS_PARTKEY      INTEGER NOT NULL,
                         PS_SUPPLYCOST   DECIMAL(15,2)  NOT NULL, 
                         PS_COMMENT      VARCHAR(199) NOT NULL,
                         PRIMARY KEY (PS_PARTKEY, PS_SUPPKEY))
-ENGINE=datalake 
+ENGINE=lakehouse 
 secondary_engine=rapid 
 ENGINE_ATTRIBUTE='{"file": 
     [{"region":"<region>",
