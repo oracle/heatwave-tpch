@@ -4,7 +4,7 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 18 - Large Volume Customer
-SELECT /*+ JOIN_SUFFIX(l, o, c) set_var(use_secondary_engine=forced) */  
+SELECT   
     C_NAME,
     C_CUSTKEY,
     O_ORDERKEY,
@@ -12,14 +12,14 @@ SELECT /*+ JOIN_SUFFIX(l, o, c) set_var(use_secondary_engine=forced) */
     O_TOTALPRICE,
     SUM(L_QUANTITY)
 FROM
-    CUSTOMER c,
-    ORDERS o,
-    LINEITEM l
+    ORDERS,
+    CUSTOMER,
+    LINEITEM as L1
 WHERE
     O_ORDERKEY IN (SELECT 
             L_ORDERKEY
         FROM
-            LINEITEM
+            LINEITEM as L2
         GROUP BY L_ORDERKEY
         HAVING SUM(L_QUANTITY) > 300)
         AND C_CUSTKEY = O_CUSTKEY

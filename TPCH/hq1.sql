@@ -4,7 +4,7 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 1 - Pricing Summary Report
-SELECT /*+ set_var(use_secondary_engine=forced) */ 
+SELECT 
     l_returnflag,
     l_linestatus,
     SUM(l_quantity) AS sum_qty,

@@ -4,12 +4,14 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPCH Query 17 - Small-Quantity-Order-Revenue Query
-SELECT /*+ SET_VAR(use_secondary_engine=forced) */
+SELECT 
     SUM(l_extendedprice) / 7.0 AS avg_yearly
 FROM 
-    PART STRAIGHT_JOIN LINEITEM ON p_partkey = l_partkey 
+    LINEITEM,
+    PART 
 WHERE 
-    p_brand = 'Brand#23'  
+    p_partkey = l_partkey
+    AND p_brand = 'Brand#23'  
     AND p_container = 'MED BOX'  
     AND l_quantity < (  
               SELECT 

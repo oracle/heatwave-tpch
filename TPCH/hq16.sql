@@ -4,7 +4,7 @@
 -- Coypright (c) 2020, Transaction Processing Performance Council
 
 -- TPC-H Query 16 - Parts/Suppplier Relationship
-SELECT /*+ set_var(use_secondary_engine=forced) */  
+SELECT   
     P_BRAND,
     P_TYPE,
     P_SIZE,
@@ -14,10 +14,10 @@ FROM
     PART
 WHERE
     P_PARTKEY = PS_PARTKEY
-        AND P_BRAND <> 'Brand#45'
-        AND P_TYPE NOT LIKE 'MEDIUM POLISHED%'
-        AND P_SIZE IN (49 , 14, 23, 45, 19, 3, 36, 9)
-        AND PS_SUPPKEY NOT IN (SELECT 
+    AND P_BRAND <> 'Brand#45'
+    AND P_TYPE NOT LIKE 'MEDIUM POLISHED%'
+    AND P_SIZE IN (49 , 14, 23, 45, 19, 3, 36, 9)
+    AND PS_SUPPKEY NOT IN (SELECT 
             S_SUPPKEY
         FROM
             SUPPLIER

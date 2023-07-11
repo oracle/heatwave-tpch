@@ -41,14 +41,15 @@ generation statements and queries derived from TPC-H benchmark, specific for MyS
 
 ### To run TPC-H queries in MySQL HeatWave Lakehouse
 1. Generate TPC-H data using TPC-H data generation tool
-2. Keep the generated data in an Object Store bucket in OCI (in the same region where the MySQL Database System will be provisioned. 
+2. Keep the generated data in an Object Store bucket in OCI (in the same region where the MySQL Database System will be provisioned). 
    Note down the namespace and bucket information.
 3. Provision a MySQL Database System. See [Getting Started with MySQL Database Service][6]
 4. Add a HeatWave cluster to MySQL Database System. See [HeatWave][8] documentation
 5. Run [create_tables_lakehouse.sql](TPCH/create_tables_lakehouse.sql) to create TPC-H schema for MySQL HeatWave Lakehouse on MySQL Database System. 
    Make sure to fill in the appropriate **\<region\>**, **\<namespace\>**, **\<bucket\>** and **\<name\>** information in the script. 
-6. Run [secondary_load_lakehouse.sql](HeatWave/secondary_load_lakehouse.sql) to configure and load data to HeatWave cluster
-7. You are now ready to run the queries derived from TPC-H
+6. For larger scale TPC-H datasets, you might need to modify your table definitions in [create_tables_lakehouse.sql](TPCH/create_tables_lakehouse.sql) to account for larger data values (BIGINTS instead of INTEGER) in certain columns.
+7. Run [secondary_load_lakehouse.sql](HeatWave/secondary_load_lakehouse.sql) to configure and load data to HeatWave cluster
+8. You are now ready to run the queries derived from TPC-H
 
 [1]: http://www.tpc.org/tpch/
 [2]: http://www.tpc.org/tpc_documents_current_versions/download_programs/tools-download-request5.asp?bm_type=TPC-H&bm_vers=2.18.0&mode=CURRENT-ONLY
