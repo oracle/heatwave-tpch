@@ -9,39 +9,57 @@ applications connect to the HeatWave cluster through standard MySQL protocols.
 The MySQL Database is built on the MySQL Enterprise Edition Server, which allows developers to quickly create and deploy secure 
 cloud native applications using the world's most popular open source database. 
 
+MySQL HeatWave Lakehouse extends MySQL HeatWave to enable you to run analytics workloads on data stored in object storage 
+at 100s of TB data scale. HeatWave Lakehouse provides the same high query performance as MySQL HeatWave, enables you to run 
+queries across data from both MySQL and object storage, providing a great solution for your data warehouse and data lake use cases.
+
 This repository contains SQL scripts derived from [TPC Benchmark&trade;H (TPC-H)][1]. The SQL scripts contain TPC-H schema
-generation statements and queries derived from TPC-H benchmark, specific for MySQL HeatWave
+generation statements and queries derived from TPC-H benchmark, specific for MySQL HeatWave and MySQL HeatWave Lakehouse.
 
 ## Software prerequisites:
 1. [TPC-H data generation tool][2] to generate TPC-H dataset for workload sizes of your choice
-2. [MySQL Shell][3] to import generated TPC-H dataset to MySQL HeatWave
+2. [MySQL Shell][3] to import generated TPC-H dataset to MySQL Database System
 
 ## Required services:
-1. [Oracle Cloud Infrastructure][7]
-2. [MySQL HeatWave on OCI][4] or [MySQL HeatWave on AWS]
+1. [Oracle Cloud Infrastructure][9]
+2. [MySQL HeatWave for OCI][4] or [MySQL HeatWave on AWS][5]
 
 ## Repository
-* [TPCH](TPCH) - a collection of scripts for TPC-H schema and queries specific to MySQL Database Service
+* [TPCH](TPCH) - a collection of scripts for TPC-H schema and queries specific to MySQL Database System
 * [HeatWave](HeatWave) - a collection of scripts to configure HeatWave to run TPC-H queries
 
 ## Getting started
-To run TPC-H queries in HeatWave
+### To run TPC-H queries in HeatWave
 1. Generate TPC-H data using TPC-H data generation tool
-2. Provision MySQL Database System
-3. Run [create_tables.sql](TPCH/create_tables.sql) to create TPC-H schema on MySQL Database Service instance
-4. Import TPC-H data generated to MySQL Database System. See [MySQL Shell Parallel Table Import Utility documentation][6]
-5. Add a HeatWave cluster to MySQL Database System. See [HeatWave][5] documentation
+2. Provision a MySQL Database System
+3. Run [create_tables.sql](TPCH/create_tables.sql) to create TPC-H schema on MySQL Database System
+4. Import TPC-H data generated to MySQL Database System. See [MySQL Shell Parallel Table Import Utility documentation][7]
+5. Add a HeatWave cluster to MySQL Database System. See [HeatWave][8] documentation
 6. Run [secondary_load.sql](HeatWave/secondary_load.sql) to configure and load data to HeatWave cluster
 7. You are now ready to run the queries derived from TPC-H
 
+
+### To run TPC-H queries in MySQL HeatWave Lakehouse
+1. Generate TPC-H data using TPC-H data generation tool
+2. Keep the generated data in an Object Store bucket in OCI (in the same region where the MySQL Database System will be provisioned). 
+   Note down the namespace and bucket information.
+3. Provision a MySQL Database System. See [Getting Started with MySQL Database Service][6]
+4. Add a HeatWave cluster to MySQL Database System. See [HeatWave][8] documentation
+5. Run [create_tables_lakehouse.sql](TPCH/create_tables_lakehouse.sql) to create TPC-H schema for MySQL HeatWave Lakehouse on MySQL Database System. 
+   Make sure to fill in the appropriate **\<region\>**, **\<namespace\>**, **\<bucket\>** and **\<name\>** information in the script. 
+6. For larger scale TPC-H datasets, you might need to modify your table definitions in [create_tables_lakehouse.sql](TPCH/create_tables_lakehouse.sql) to account for larger data values (BIGINTS instead of INTEGER) in certain columns.
+7. Run [secondary_load_lakehouse.sql](HeatWave/secondary_load_lakehouse.sql) to configure and load data to HeatWave cluster
+8. You are now ready to run the queries derived from TPC-H
 
 [1]: http://www.tpc.org/tpch/
 [2]: http://www.tpc.org/tpc_documents_current_versions/download_programs/tools-download-request5.asp?bm_type=TPC-H&bm_vers=2.18.0&mode=CURRENT-ONLY
 [3]: https://dev.mysql.com/downloads/shell/
 [4]: https://docs.oracle.com/en-us/iaas/mysql-database/doc/heatwave.html
-[5]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/doc/mysql-analytics-engine.html
-[6]: https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-parallel-table.html
-[7]: https://docs.cloud.oracle.com/en-us/iaas/Content/home.htm
+[5]: https://dev.mysql.com/doc/heatwave-aws/en/
+[6]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/doc/getting-started.html
+[7]: https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-parallel-table.html
+[8]: https://docs.cloud.oracle.com/en-us/iaas/mysql-database/doc/mysql-analytics-engine.html
+[9]: https://docs.cloud.oracle.com/en-us/iaas/Content/home.htm
 
 TPC Benchmark&trade;, TPC-H, QppH, QthH, and QphH are trademarks of the Transaction Processing Performance
 Council.
@@ -52,3 +70,18 @@ copyright notice, the title of the publication, and its date appear, and notice 
 the Transaction Processing Performance Council.
 
 Benchmark queries are derived from the TPC-H benchmark, but results are not comparable to published TPC-H benchmark results since they do not comply with the TPC-H specification.
+
+## Contributing
+
+This project is not accepting external contributions at this time. For bugs or enhancement requests, please file a GitHub issue unless it’s security related. When filing a bug remember that the better written the bug is, the more likely it is to be fixed. If you think you’ve found a security vulnerability, do not raise a GitHub issue and follow the instructions in our [security policy](./SECURITY.md).
+
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
+## License
+
+Copyright (c) 2020, 2023 Oracle and/or its affiliates.
+
+Released under the Universal Permissive License v1.0 as shown at
+<https://oss.oracle.com/licenses/upl/>.
